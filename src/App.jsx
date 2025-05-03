@@ -1,8 +1,27 @@
 import './App.css'
 import {NavBar} from './components/Nav/NavBar.jsx'
+import {Carousel} from './components/Carousel/Carousel.jsx'
 
 function App() {
 
+  const carouselImages = [
+    {
+        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Bamboo%20Spatula/1.png',
+        caption: 'Producto 1',
+    },
+    {
+        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Black%20Aluminium%20Cup/1.png',
+        caption: 'Producto 2',
+    },
+    {
+        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Black%20Whisk/1.png',
+        caption: 'Producto 3',
+    },
+    {
+        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Boxed%20Blender/1.png',
+        caption: 'Producto 4',
+    },
+    ];
 
   return (
     <div className="landing-container">
@@ -11,14 +30,11 @@ function App() {
       <NavBar/>
 
       <div className="hero-content">
-        <div className="text-section">
+        <div className="text-content">
           <h1>Cook’s Fascinations</h1>
           <p>Quality kitchen tools enhance cooking with precision and ease.</p>
         </div>
-        <div className="image-section">
-          <img src="/scissors.png" alt="Chef Scissors" />
-          <span className="caption">Chef's Scissors</span>
-        </div>
+          <Carousel images={carouselImages}/>
       </div>
     </header>
 

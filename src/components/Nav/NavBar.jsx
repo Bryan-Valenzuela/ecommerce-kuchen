@@ -33,9 +33,9 @@ export const NavBar = ({ user, cartCount = 2 }) => {
         <nav className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
           <input type="text" placeholder="Buscar..." className="navbar__search" />
 
-          <a href="#">¿Quiénes somos?</a>
-          <a href="#">Productos</a>
-          <a href="#">Contacto</a>
+          <a href="#">About us</a>
+          <a href="#">Products</a>
+          <a href="#">Contact</a>
 
           {user ? (
             <div className="navbar__user">
@@ -43,7 +43,7 @@ export const NavBar = ({ user, cartCount = 2 }) => {
               <span>{user.name}</span>
             </div>
           ) : (
-            <a href="/login">Iniciar sesión</a>
+            <a href="/login">Log in</a>
           )}
 
           <div className="navbar__cart">
