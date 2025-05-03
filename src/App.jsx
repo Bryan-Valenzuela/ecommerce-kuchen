@@ -1,27 +1,15 @@
 import './App.css'
 import {NavBar} from './components/Nav/NavBar.jsx'
 import {Carousel} from './components/Carousel/Carousel.jsx'
+import { CAROUSELIMAGES, PRODUCTS} from './constants.js'
+import { ProductCard } from './components/ProductCard/ProductCard.jsx'
+
+
 
 function App() {
 
-  const carouselImages = [
-    {
-        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Bamboo%20Spatula/1.png',
-        caption: 'Producto 1',
-    },
-    {
-        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Black%20Aluminium%20Cup/1.png',
-        caption: 'Producto 2',
-    },
-    {
-        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Black%20Whisk/1.png',
-        caption: 'Producto 3',
-    },
-    {
-        url: 'https://cdn.dummyjson.com/products/images/kitchen-accessories/Boxed%20Blender/1.png',
-        caption: 'Producto 4',
-    },
-    ];
+  const carouselImages = CAROUSELIMAGES
+  let products = PRODUCTS
 
   return (
     <div className="landing-container">
@@ -42,24 +30,30 @@ function App() {
     <section className="collection">
       <h2>Discover Curated Collection</h2>
 
-      <div className="collection-categories">
-        <span>Best Seller</span>
-        <span>Equipment</span>
-        <span>Kitchenware</span>
-        <span>Chef's Tools</span>
-      </div>
+      
 
       <div className="product-grid">
-        <div className="product-card">
-          <span className="tag">Best Seller</span>
-          <img src="/bundle.png" alt="Bundle Bliss" />
-          <h3>Bundle Bliss</h3>
-          <p>$24.99</p>
-        </div>
+        
+        {products && products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard 
+              key={product.id}
+              id={product.id}
+              image={product.thumbnail}
+              name={product.title}
+              price={product.price}
+              rating={product.rating}
+              isOnSale={!!product.discountPercentage}
+              discount={product.discountPercentage || 0}
+            />
+          ))
+        ) : (
+          <p>No hay productos disponibles.</p>
+        )}
               
       </div>
 
-      <button className="view-all">View All</button>
+      <button className="view-all-btn">View All</button>
     </section>
   </div>
   )
